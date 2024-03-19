@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c82veycg0l5xj"]
+
+[ext_resource type="Shader" path="res://Shaders/SmokeShader.gdshader" id="1_ymw8q"]
+[ext_resource type="NoiseTexture3D" uid="uid://bwydqh15qmvxa" path="res://Shaders/NoiseResource.tres" id="2_cm5gb"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ymw8q")
+shader_parameter/NoiseTexturePower = 0.361
+shader_parameter/NoiseTextureSoftness = 0.096
+shader_parameter/ColorTint = Color(0.156863, 0.156863, 0.156863, 1)
+shader_parameter/AlphaCutoff = 0.3
+shader_parameter/TimeScale = 0.5
+shader_parameter/NoiseScale = 0.05
+shader_parameter/EmissionPower = 1.0
+shader_parameter/EmissionAlphaPower = 1.0
+shader_parameter/DisplacementScale = 0.5
+shader_parameter/NoiseTexture = ExtResource("2_cm5gb")

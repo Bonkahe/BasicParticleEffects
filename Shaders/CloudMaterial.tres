@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://c01c34r3vrxsd"]
+
+[ext_resource type="Shader" path="res://Shaders/SmokeShader.gdshader" id="1_pgxj0"]
+[ext_resource type="NoiseTexture3D" uid="uid://bwydqh15qmvxa" path="res://Shaders/NoiseResource.tres" id="2_krb1m"]
+
+[sub_resource type="Gradient" id="Gradient_1sgvr"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a7qf5"]
+gradient = SubResource("Gradient_1sgvr")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_pgxj0")
+shader_parameter/NoiseTexturePower = 0.5
+shader_parameter/NoiseTextureSoftness = 0.092
+shader_parameter/ColorTint = Color(0.156863, 0.156863, 0.156863, 1)
+shader_parameter/AlphaCutoff = 0.3
+shader_parameter/TimeScale = 1.0
+shader_parameter/NoiseScale = 0.15
+shader_parameter/EmissionPower = 5.0
+shader_parameter/EmissionAlphaPower = 1.0
+shader_parameter/DisplacementScale = 1.165
+shader_parameter/GradientFalloff = SubResource("GradientTexture2D_a7qf5")
+shader_parameter/NoiseTexture = ExtResource("2_krb1m")

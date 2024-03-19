@@ -1,0 +1,25 @@
+[gd_resource type="NoiseTexture3D" load_steps=3 format=3 uid="uid://bwydqh15qmvxa"]
+
+[sub_resource type="Gradient" id="Gradient_rmosx"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_m4ay1"]
+noise_type = 2
+frequency = 0.1407
+fractal_type = 2
+fractal_octaves = 2
+fractal_lacunarity = 0.225
+fractal_gain = 8.01
+fractal_weighted_strength = 0.43
+cellular_jitter = 0.98
+domain_warp_enabled = true
+domain_warp_amplitude = 5.0
+
+[resource]
+width = 128
+height = 128
+depth = 128
+invert = true
+seamless = true
+seamless_blend_skirt = 0.321
+color_ramp = SubResource("Gradient_rmosx")
+noise = SubResource("FastNoiseLite_m4ay1")

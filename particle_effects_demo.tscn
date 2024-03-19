@@ -1,0 +1,161 @@
+[gd_scene load_steps=20 format=3 uid="uid://coy2ofqhdyj21"]
+
+[ext_resource type="Script" path="res://ParticleDemoHandler.gd" id="1_u1hdw"]
+[ext_resource type="PackedScene" uid="uid://cxtblmouwvmye" path="res://Prefab.tscn" id="2_eip1r"]
+[ext_resource type="Script" path="res://camera.gd" id="3_u3xsg"]
+[ext_resource type="Texture2D" uid="uid://cuqs8c0l7bj5a" path="res://particle_sprite_smoke.webp" id="5_1r5p7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gutqg"]
+sky_top_color = Color(0.211765, 0.258824, 0.32549, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+sky_curve = 0.764736
+sky_cover_modulate = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+ground_curve = 0.00017337
+sun_angle_max = 20.89
+sun_curve = 0.150001
+
+[sub_resource type="Sky" id="Sky_2w2im"]
+sky_material = SubResource("ProceduralSkyMaterial_gutqg")
+
+[sub_resource type="Environment" id="Environment_4muj6"]
+background_mode = 2
+sky = SubResource("Sky_2w2im")
+ambient_light_source = 2
+ambient_light_color = Color(0.262745, 0.321569, 0.356863, 1)
+tonemap_mode = 2
+ssao_enabled = true
+ssao_intensity = 7.59
+ssil_enabled = true
+ssil_normal_rejection = 0.5
+sdfgi_cascades = 8
+sdfgi_min_cell_size = 0.05
+sdfgi_cascade0_distance = 3.2
+sdfgi_max_distance = 819.2
+sdfgi_y_scale = 0
+glow_enabled = true
+glow_intensity = 1.82
+volumetric_fog_density = 0.0709
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_y8wce"]
+
+[sub_resource type="Gradient" id="Gradient_kewvi"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0.490975, 1)
+colors = PackedColorArray(0.3478, 0.36371, 0.37, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2jouj"]
+gradient = SubResource("Gradient_kewvi")
+width = 512
+height = 512
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d2fo6"]
+albedo_texture = SubResource("GradientTexture2D_2jouj")
+metallic_specular = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ckdvw"]
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1x6ty"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("5_1r5p7")
+backlight_enabled = true
+backlight = Color(0.776471, 0.776471, 0.776471, 1)
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = false
+proximity_fade_enabled = true
+proximity_fade_distance = 0.5
+distance_fade_mode = 1
+distance_fade_max_distance = 3.0
+
+[sub_resource type="Gradient" id="Gradient_ykv6a"]
+offsets = PackedFloat32Array(0, 0.260417, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gr634"]
+gradient = SubResource("Gradient_ykv6a")
+
+[sub_resource type="Curve" id="Curve_6fide"]
+_data = [Vector2(0, 0.0831234), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hxyd8"]
+curve = SubResource("Curve_6fide")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xxm1l"]
+lifetime_randomness = 0.5
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 1, 0)
+angular_velocity_min = -10.0
+angular_velocity_max = 10.0
+gravity = Vector3(0, 3, 0)
+damping_min = 0.3
+damping_max = 0.3
+scale_min = 25.0
+scale_max = 30.0
+scale_curve = SubResource("CurveTexture_hxyd8")
+scale_over_velocity_min = 1.0
+scale_over_velocity_max = 10.0
+color = Color(1, 1, 1, 0.423529)
+color_ramp = SubResource("GradientTexture1D_gr634")
+hue_variation_min = -0.01
+hue_variation_max = 0.01
+anim_speed_min = 0.5
+anim_speed_max = 1.0
+anim_offset_max = 0.1
+turbulence_enabled = true
+turbulence_influence_min = 0.02
+turbulence_influence_max = 0.02
+
+[sub_resource type="QuadMesh" id="QuadMesh_ehxa1"]
+
+[node name="ParticleEffectsDemo" type="Node3D"]
+script = ExtResource("1_u1hdw")
+ParticleEffect = ExtResource("2_eip1r")
+SpawnSpread = 10.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4muj6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.309054, 0.393047, 1.49012e-08, 0.786094, 0.618107, -0.5, 0.535296, -0.680777, 0, 0, 0)
+shadow_enabled = true
+shadow_blur = 2.0
+directional_shadow_max_distance = 75.0
+
+[node name="PlayerScale" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.265467, 1.23869, 7.32102)
+mesh = SubResource("CapsuleMesh_y8wce")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.0477986, 0.705489, 0, 0.997713, 0.0675974, -0.707107, -0.0477985, 0.705489, 10.598, 2.99201, 10.6711)
+size = 33.352
+script = ExtResource("3_u3xsg")
+
+[node name="Platform" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_d2fo6")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_ckdvw")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5177, -0.0572913, 9.33494)
+visible = false
+material_override = SubResource("StandardMaterial3D_1x6ty")
+amount = 32
+lifetime = 8.0
+draw_order = 3
+process_material = SubResource("ParticleProcessMaterial_xxm1l")
+draw_pass_1 = SubResource("QuadMesh_ehxa1")

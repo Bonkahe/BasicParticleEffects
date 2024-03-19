@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://ca4h3786y6aau"]
+
+[ext_resource type="Shader" path="res://Shaders/Shockwave.gdshader" id="1_futb5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_at6nf"]
+noise_type = 4
+frequency = 0.1285
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_kjy5a"]
+seamless = true
+seamless_blend_skirt = 0.279
+noise = SubResource("FastNoiseLite_at6nf")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_futb5")
+shader_parameter/distortionView = 0.015
+shader_parameter/tintColor = Color(0.141176, 0.184314, 0.231373, 1)
+shader_parameter/fesnelAmount = 1.8
+shader_parameter/fesnelViewEffectAmount = 0.064
+shader_parameter/DisplacementScale = 0.065
+shader_parameter/speedVertex = 0.13
+shader_parameter/NoiseScale = 0.2
+shader_parameter/NoiseTexture = SubResource("NoiseTexture3D_kjy5a")

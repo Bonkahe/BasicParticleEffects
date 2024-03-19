@@ -1,0 +1,12 @@
+SpotLight3D
+GPUParticlesAttractorSphere3D
+GPUParticlesCollisionBox3D
+GPUParticles3D
+CPUParticles3D
+MeshInstance3D
+CSGSphere3D
+OmniLight3D
+Node3D
+CSGBox3D
+Camera3D
+AnimationPlayer

@@ -1,0 +1,10 @@
+res://particle_effects_demo.tscn
+res://PlayExplosion.res
+res://Shaders/SmokeShader.gdshader
+res://Shaders/NoiseResource.tres
+res://Shaders/CloudMaterial.tres
+res://Shaders/InternalCloudMaterial.tres
+res://Shaders/Shockwave.gdshader
+res://Shaders/ShockwaveMaterial.tres
+res://Shaders/PrimaryCloudMaterial.tres
+res://Prefab.tscn
